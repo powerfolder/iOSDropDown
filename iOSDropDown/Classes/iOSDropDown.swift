@@ -39,6 +39,11 @@ open class DropDown : UITextField{
 
         }
     }
+    @IBInspectable public var listWidth: CGFloat = 0{
+        didSet {
+
+        }
+    }
     @IBInspectable public var borderWidth: CGFloat = 0.0 {
         didSet {
             layer.borderWidth = borderWidth
@@ -201,9 +206,10 @@ open class DropDown : UITextField{
                        options: .curveEaseInOut,
                        animations: { () -> Void in
 
+                        let width = self.listWidth > 0 ? self.listWidth : self.frame.width
                         self.table.frame = CGRect(x: self.pointToParent.x,
                                                   y: self.pointToParent.y+self.frame.height+5,
-                                                  width: self.frame.width,
+                                                  width: width,
                                                   height: self.tableheightX)
                         self.table.alpha = 1
                         self.shadow.frame = self.table.frame
